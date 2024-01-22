@@ -25,4 +25,4 @@ jobs:
             - name: Echo a String
               run: Write-Output "Windows String"
             - name: Error
-              run: doesnotexist
+              run: doesnotexists
