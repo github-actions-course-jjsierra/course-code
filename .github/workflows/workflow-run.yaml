@@ -3,6 +3,7 @@ on:
     workflow_run:
         workflows: [Repository Events]
         types: [completed]
+        branches: [main]
 
 jobs:
     echo-string:
