@@ -1,0 +1,14 @@
+name: Stale Issues and PRs
+on:
+    schedule:
+        - cron: "0 14 * * *"
+
+jobs:
+    stale:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/stale@v8
+              with:
+                stale-issue-message: "This is some message."
+                days-before-stale: 4
+                days-before-close: 7
