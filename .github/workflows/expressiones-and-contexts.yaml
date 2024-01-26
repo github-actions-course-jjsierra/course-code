@@ -16,8 +16,8 @@ jobs:
                 echo ${{ 'string' == 'String' && false }}
             - name: Dump Contexts
               run: |
-                echo ${{ toJson(github) }}
-                echo ${{ toJson(job) }}
-                echo ${{ toJson(secrets) }}
-                echo ${{ toJson(runner) }}
-                echo ${{ toJson(steps) }}
+                echo '${{ toJson(github) }}'
+                echo '${{ toJson(job) }}'
+                echo '${{ toJson(secrets) }}'
+                echo '${{ toJson(runner) }}'
+                echo '${{ toJson(steps) }}'
