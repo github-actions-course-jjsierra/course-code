@@ -7,7 +7,7 @@ jobs:
         runs-on: ubuntu-latest
         # Overrides all permissiones, every other now has none
         permissions:
-            issues: write
+            pull-requests: write
         steps:
             - name: Comment on New PRs
               uses: actions/github-script@v6
