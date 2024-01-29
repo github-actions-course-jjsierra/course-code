@@ -22,6 +22,12 @@ jobs:
             - run: |
                 echo '${{steps.step-1.outputs.step-output }}'
                 echo '${{steps.step-2.outputs.step-output }}'
+            - uses: actions/github-script@v6
+              id: matrix-arrays
+              with:
+                script: "return {os: context.payload.inputs['os'].split(','), 'node-version': context.payload.imputs['node-version'].split(',')}"
+                result-encoding: json
+            - run: echo '${{ steps.matrix-arrays.outputs.result }}'
     node-matrix:
         strategy:
             matrix:
