@@ -3,14 +3,36 @@ on: [push]
 
 jobs:
     node-matrix:
+        continue-on-error: false
         strategy:
             # Will run number of possible combinations
             matrix:
                 os: [windows-latest, ubuntu-latest]
                 node-version: [14, 15, 16]
+                include:
+                      #Will merge is-ubuntu with os with ubuntu.latest
+                    - os: ubuntu-latest
+                      is-ubuntu: true
+                      #Will create a new item
+                    - os: macos-latest
+                      node-version: 15
+                      #Will get merged with every original item
+                    - experimental: false
+                      #Will only add exp true to ubuntu node 16
+                    - os: ubuntu-latest
+                      node-version: 16
+                      experimental: true
+                exclude:
+                    - os: ubuntu-latest
+                      node-version: 14
+            # only 3 can run at the same time
+            max-parallel: 3
+            # if any job fails, the other will continue
+            fail-fast: false
         runs-on: ${{ matrix.os }}
         steps:
             - run: node -v
+            - run: echo '${{ toJson(matrix) }}'
             - uses: actions/setup-node@v3
               with:
                 node-version: ${{ matrix.node-version }}
