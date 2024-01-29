@@ -1,0 +1,21 @@
+name: Concurrency 1
+run-name: Concurrency 1 (${{ inputs.environment }})
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Environment"
+        type: environment
+        required: true
+
+#Only run WF 1 at a time with the same concurrency
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.inputs.environment }}
+    #Only run the latest
+    cancel-in-progress: true
+
+jobs:
+  sleep:
+    runs-on: ubuntu-latest
+    steps:
+      - run: sleep 30
