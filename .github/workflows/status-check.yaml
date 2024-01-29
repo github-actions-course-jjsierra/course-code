@@ -7,6 +7,7 @@ jobs:
         steps:
             - name: Step 1
               run: sleep 20
+              timeout-minutes: 1
             - name: Fails
               id: step-2
               # Prevents the entire job from failing
