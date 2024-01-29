@@ -22,3 +22,4 @@ jobs:
         needs: calling-reusable-wf-same-repo
         steps:
             - run: echo ${{ needs.calling-reusable-wf-same-repo.outputs.date }}
+            
