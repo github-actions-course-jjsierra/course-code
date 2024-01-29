@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
     node-matrix:
-        continue-on-error: false
+        continue-on-error: ${{ matrix.experimental == true }}
         strategy:
             # Will run number of possible combinations
             matrix:
@@ -28,9 +28,11 @@ jobs:
             # only 3 can run at the same time
             max-parallel: 3
             # if any job fails, the other will continue
-            fail-fast: false
+            fail-fast: true
         runs-on: ${{ matrix.os }}
         steps:
+            - if: matrix.experimental == true
+              run: exit 1
             - run: node -v
             - run: echo '${{ toJson(matrix) }}'
             - uses: actions/setup-node@v3
