@@ -9,10 +9,15 @@ jobs:
               run: sleep 20
             - name: Fails
               id: step-2
+              # Prevents the entire job from failing
+              continue-on-error: true
               run: exit 1
-            - name: Runs on Failure
+            - name: Runs on Failure of step 2
               if: failure() && steps.step-2.conclusion == 'failure'
               run: echo 'Runs only on failure of step 2'
+            - name: Runs on Failure
+              if: failure()
+              run: echo 'Runs only on failure'
             - name: Runs on Success
               run: echo 'Runs on Success'
             - name: Always runs
