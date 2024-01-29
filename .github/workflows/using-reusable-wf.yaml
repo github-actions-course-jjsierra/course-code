@@ -10,7 +10,7 @@ on:
 
 jobs:
     calling-reusable-workflow:
-        uses: github-actions-course-jjsierra/workflows/.github/workflows/reusable.yaml@main
+        uses: github-actions-course-jjsierra/workflows/.github/workflows/reusable.yaml@b1a7925
         with:
             name: ${{ inputs.name }}
         secrets:
