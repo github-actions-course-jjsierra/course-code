@@ -7,12 +7,24 @@ jobs:
         steps:
             - uses: actions/checkout@v3
             - name: Simple Docker Action
+              if: cancelled()
               id: greet
               uses: ./.github/actions/hello-docker
               # uses: actions/hello-world-javascript-action@d984cb2e617ed5328d424000d8f3ac5b90787d08
               with:
                 who_to_greet: Sierra
             - name: Log Greeting Time
+              if: cancelled()
               run: echo "${{ steps.greet.outputs.time }}"
             - name: Log Env Var
+              if: cancelled()
               run: echo $HELLO_TIME
+            - name: Send a joke on Slack
+              uses: ./.github/actions/slack-joke
+              id: slack-joke
+              with:
+                slack_username: "Juan José Sierra Mejía"
+                upload_joke: true
+                slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+            - name: Displaying output joke
+              run: echo '${{ steps.slack-joke.outputs.joke }}'
