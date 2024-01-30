@@ -20,6 +20,7 @@ try {
     console.log(JSON.stringify(github.context, null, 2))
     core.endGroup()
 
-} catch (e) {
-    core.setFailed(e.message)
+} catch (error) {
+    console.log(error)
+    core.setFailed(error.message)
 }
