@@ -27,6 +27,14 @@ jobs:
                 name: code-coverage
                 path: coverage
                 retention-days: 10
+            - name: Downoadl code coverage
+              uses: actions/download-artifact@v3
+              with:
+                name: code-coverage
+                path: code-coverage-report
+            - run: ls -a
+            - run: ls -a
+              working-directory: code-coverage-report
             - name: Use axios
               uses: actions/github-script@v6
               with:
