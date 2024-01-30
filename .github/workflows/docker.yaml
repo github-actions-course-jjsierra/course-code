@@ -34,3 +34,9 @@ jobs:
               with:
                 entrypoint: cat
                 args: text.txt
+            - uses: actions/ckeckout@v3
+            - name: Run a bash script
+              uses: docker://node:18.16-alpine3.17
+              with:
+                entrypoint: ./script.sh
+                args: "Some string"
