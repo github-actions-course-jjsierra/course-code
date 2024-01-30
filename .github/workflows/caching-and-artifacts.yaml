@@ -18,6 +18,15 @@ jobs:
               run: echo '${{ toJson(steps.cache-dependencies.outputs) }}'
             - name: Install dependencies
               run: npm install
+            - name: Run tests
+              run: npm test
+            - name: Upload code coverage report
+              uses: actions/upload-artifact@v3
+              if: always()
+              with:
+                name: code-coverage
+                path: coverage
+                retention-days: 10
             - name: Use axios
               uses: actions/github-script@v6
               with:
