@@ -30858,8 +30858,9 @@ try {
     console.log(JSON.stringify((_actions_github__WEBPACK_IMPORTED_MODULE_1___default().context), null, 2))
     _actions_core__WEBPACK_IMPORTED_MODULE_0___default().endGroup()
 
-} catch (e) {
-    _actions_core__WEBPACK_IMPORTED_MODULE_0___default().setFailed(e.message)
+} catch (error) {
+    console.log(error)
+    _actions_core__WEBPACK_IMPORTED_MODULE_0___default().setFailed(error.message)
 }
 })();
 
