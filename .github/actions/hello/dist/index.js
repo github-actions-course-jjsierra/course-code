@@ -30840,8 +30840,7 @@ __nccwpck_require__.r(__webpack_exports__);
 
 
 try {
-
-    _actions_core__WEBPACK_IMPORTED_MODULE_0___default().degub('Debug Message')
+    _actions_core__WEBPACK_IMPORTED_MODULE_0___default().debug('Debug Message')
     _actions_core__WEBPACK_IMPORTED_MODULE_0___default().warning('Warning Message')
     _actions_core__WEBPACK_IMPORTED_MODULE_0___default().error('Error Message')
 

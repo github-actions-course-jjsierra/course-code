@@ -2,8 +2,7 @@ import core from '@actions/core'
 import github from '@actions/github'
 
 try {
-
-    core.degub('Debug Message')
+    core.debug('Debug Message')
     core.warning('Warning Message')
     core.error('Error Message')
 
